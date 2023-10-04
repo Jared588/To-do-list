@@ -17,6 +17,7 @@ header {
     color: rgb(11, 24, 61);
     background-color: rgb(241, 80, 80);
     height: 3rem;
+    align-items: center;
 }
 
 .header-left-side {
@@ -29,6 +30,8 @@ header {
 
 .icon {
     height: 2rem;
+    width: 2rem;
+    fill: red;
 }
 
 .main-container {
