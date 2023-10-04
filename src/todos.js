@@ -1,8 +1,3 @@
-const Todo = (title, description, dueDate, priority) => {
-    let title = () => title;
-    let description = () => description;
-    let dueDate = () => dueDate;
-    let priority = () => priority;
-
-    return {title, description, dueDate, priority};
-}
+export default function Todo(title, description, dueDate, priority, status) {
+    return {title, description, dueDate, priority, status};
+};
