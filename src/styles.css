@@ -11,8 +11,24 @@ body {
 }
 
 header {
+    display: flex;
     text-align: center;
+    justify-content: space-between;
     color: rgb(11, 24, 61);
+    background-color: rgb(241, 80, 80);
+    height: 3rem;
+}
+
+.header-left-side {
+    display: flex;  
+}
+
+.header-right-side {
+    display: flex;
+}
+
+.icon {
+    height: 2rem;
 }
 
 .main-container {
