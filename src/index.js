@@ -1,3 +1,4 @@
+import './styles.css'
 import Project from "./project";
 import { addToProject } from "./project";
 import { addToProjectList } from "./project";
