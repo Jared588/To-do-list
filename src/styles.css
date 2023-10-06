@@ -10,12 +10,16 @@ body {
     padding: 0; 
 }
 
+:root {
+    --header-color: rgb(241, 80, 80);
+}
+
 header {
     display: flex;
     text-align: center;
     justify-content: space-between;
     color: rgb(11, 24, 61);
-    background-color: rgb(241, 80, 80);
+    background-color: var(--header-color);
     height: 3rem;
     align-items: center;
 }
@@ -38,8 +42,20 @@ header {
     cursor: pointer;
 }
 
+#searchbar {
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: var(--header-color);
+    color: rgb(253, 225, 225);
+    outline: none;
+}
+
+input::placeholder {
+    color: white;
+}
+
 svg {
-    color: rgb(252, 213, 213);
+    color: rgb(253, 225, 225);
 }
 
 .main-container {
