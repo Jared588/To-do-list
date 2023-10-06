@@ -22,16 +22,24 @@ header {
 
 .header-left-side {
     display: flex;  
+    gap: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .header-right-side {
     display: flex;
+    gap: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .icon {
     height: 2rem;
     width: 2rem;
-    fill: red;
+    cursor: pointer;
+}
+
+svg {
+    color: rgb(252, 213, 213);
 }
 
 .main-container {
