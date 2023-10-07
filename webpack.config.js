@@ -6,7 +6,8 @@ module.exports = {
     entry: {
       index: './src/index.js',
       project: './src/project.js',
-      todo: './src/todos.js'
+      todo: './src/todos.js',
+      modal: './src/modal.js'
     },
     plugins: [
         new HtmlWebpackPlugin({

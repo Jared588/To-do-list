@@ -14,15 +14,38 @@
             <input id="searchbar" placeholder="Search..." style="width: clamp(40px, 50%, 200px);"></input>
         </div>
         <div class="header-right-side">
-            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentcolor"/></svg></div>
+            <div id="addBtn" class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentcolor"/></svg></div>
             <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z" fill="currentcolor"/></svg></div>
             <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" fill="currentcolor"/></svg></div>
             <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" fill="currentcolor"/></svg></div>
         </div>
     </header>
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Contact Us</h2>
+            <form id="addToDo">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
     <div class="main-container">
-        <div class="side-panel">side stuff
-            <ul>Projects</ul>
+        <div class="side-panel">
+            <div class="project-list">
+                <ul class="project-container" id="personal">Personal</ul>
+                <ul class="project-container" id="work">Work</ul>
+                <ul class="project-container" id="groceries">Groceries</ul>
+                <ul class="project-container" id="fitness">Fitness</ul>
+            </div>
         </div>
         <div class="content">main stuff</div>
     </div>

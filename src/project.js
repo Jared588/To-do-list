@@ -5,10 +5,10 @@ export default function Project(name) {
     };
 }
 
-export function addToProject(project, todo) {
+export function addToDo(project, todo) {
     project.todos.push(todo);
 }
 
-export function addToProjectList(projectList, project) {
+export function addProject(projectList, project) {
     projectList.push(project);
 }
