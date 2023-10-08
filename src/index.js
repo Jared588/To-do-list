@@ -5,16 +5,18 @@ import { addProject } from "./project";
 import Todo from "./todos";
 import openModal from './modal';
 import { closeModal } from './modal';
+import { updateProjectList } from './project';
 
-let projects = [];
+let Projects = [];
 
-const defaultProject = Project("default");
-addProject(projects, defaultProject);
+// Default Projects
+let Personal = Project("Personal");
+let testToDo = Todo("s", Personal, "bla bla bla,", 2, "busy", 1111, 222);
+addToDo(Personal, testToDo);
+addProject(Projects, Personal);
+updateProjectList(Projects);
 
-const groceries = Todo("groceries", "This weeks groceries", "Tomorrow", 7);
-addToDo(defaultProject, groceries);
-
-console.log(defaultProject.name);
+console.log(Projects);
 
 //form
 // Handle form submission
@@ -31,9 +33,8 @@ document.getElementById("addToDo").addEventListener("submit", function (e) {
     
     const newTodo = Todo(todoName, todoProject, todoDescription, todoPriority, todoStatus, todoDate, todoTime);
     addToDo(todoProject, newTodo);
-
-    console.log(todoName, todoDescription);
-
+    
+    updateProjectList(Projects);
     closeModal();
 });
 
