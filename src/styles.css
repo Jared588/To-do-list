@@ -63,28 +63,71 @@ svg {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     font-size: 22px;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1; 
+    overflow: auto;  
 }
 
 .modal-content {
     background-color: white;
     padding: 2rem 4rem;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
+    width: 700px;
+    max-width: 700px;
     height: auto;
     border-radius: 1rem;
     margin-bottom: 10%;
+    background: rgb(216, 216, 216);
+}
+
+label {
+    color: rgb(73, 73, 73);
+}
+
+#title::placeholder {
+    color: #888; /* Change to the desired color */
+}
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    padding: 1rem;
+}
+
+.form-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.form-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+input, 
+textarea {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgb(216, 216, 216);
 }
 
 .close {
     color: #aaa;
+    position: relative;
+    bottom: 15px;
+    left: 35px;
     float: right;
     font-size: 28px;
     font-weight: bold;

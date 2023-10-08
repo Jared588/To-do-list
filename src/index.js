@@ -21,13 +21,18 @@ console.log(defaultProject.name);
 document.getElementById("addToDo").addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    const todoName = document.getElementById("todoName").value;
-    const todoDescription = document.getElementById("todoDescription").value;
-    const todoDueDate = document.getElementById("todoDueDate").value;
-    const todoPriority = document.getElementById("todoPriority").value;
+    const todoName = document.getElementById("title").value;
+    const todoProject = document.getElementById("modal-project-list").value;
+    const todoDescription = document.getElementById("description").value;
+    const todoPriority = document.getElementById("priority").value;
+    const todoStatus = document.getElementById("status").value;
+    const todoDate = document.getElementById("date").value;
+    const todoTime = document.getElementById("time").value;
     
-    const newTodo = Todo(todoName, todoDescription, todoDueDate, todoPriority);
-    addToDo(defaultProject, newTodo);
+    const newTodo = Todo(todoName, todoProject, todoDescription, todoPriority, todoStatus, todoDate, todoTime);
+    addToDo(todoProject, newTodo);
+
+    console.log(todoName, todoDescription);
 
     closeModal();
 });

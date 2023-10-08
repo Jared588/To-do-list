@@ -1,3 +1,3 @@
-export default function Todo(title, description, dueDate, priority, status) {
-    return {title, description, dueDate, priority, status};
+export default function Todo(title, project, description, priority, status, date, time) {
+    return {title, project, description, priority, status, date, time};
 };

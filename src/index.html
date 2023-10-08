@@ -23,18 +23,40 @@
     <div class="modal" id="myModal">
         <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
-            <h2>Contact Us</h2>
             <form id="addToDo">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
+                <div class="form-top">
+                    <input type="text" id="title" name="title" placeholder="Title" required><br>
+                    <div class="modal-projects">
+                        <select id="modal-project-list" name="projects" required>
+                            <option value="defaut" disabled selected>Select Project</option>
+                        </select>
+                    </div>
+                </div>
                 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
+                <div class="description-container">
+                    <textarea id="description" rows="2" name="description" placeholder="Description" required></textarea>
+                </div><br>
                 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea><br>
+                <div class="form-bottom"> 
+                    <div class="input-container">
+                        <label for="priority">Priority:</label>
+                        <input type="number" min="0" max="10" id="priority" name="priority" required></input><br>
+                    </div>
+                    <div class="input-container">
+                        <label for="status">Status:</label>
+                        <select id="status" name="status" required>
+                            <option value="todo">To Do</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select><br>
+                    </div>
+                    <div class="input-container">
+                        <input type="date" id="date" name="date" required></input><br>
+                        <input type="time" id="time" name="time" required></input><br>
+                    </div>
+                </div>
                 
-                <input type="submit" value="Submit">
+                <button type="submit">Add Todo</button>
             </form>
         </div>
     </div>
