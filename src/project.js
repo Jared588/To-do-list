@@ -39,6 +39,9 @@ export function updateModalOptions(Projects) {
     for (let project of Projects) {
         let projectDiv = document.createElement("option");
         projectDiv.textContent = project.name;
+        projectDiv.value = project.name;
         modalProjectList.appendChild(projectDiv);
     }
+
+    console.log(modalProjectList)
 }
