@@ -47,18 +47,18 @@ export default function calibrateForm(Projects) {
 }
 
 // Function to open the modal
-export function openModal() {
+function openModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "flex";
 }
 
 // Function to close the modal
-export function closeModal() {
+function closeModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
 }
 
-export function updateModalOptions(Projects) {
+function updateModalOptions(Projects) {
     // Add available Projects to the modal
     let modalProjectList = document.getElementById("modal-project-list");
 
