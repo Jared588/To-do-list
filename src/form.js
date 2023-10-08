@@ -1,5 +1,5 @@
 import Todo from "./todos";
-import { addToDo, updateModalOptions } from "./project";
+import { addToDo } from "./project";
 import { updateProjectList } from "./project";
 
 export default function calibrateForm(Projects) {
@@ -56,4 +56,19 @@ export function openModal() {
 export function closeModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
+}
+
+export function updateModalOptions(Projects) {
+    // Add available Projects to the modal
+    let modalProjectList = document.getElementById("modal-project-list");
+
+    // Clear the existing list
+    modalProjectList.innerHTML = "";
+
+    for (let project of Projects) {
+        let projectDiv = document.createElement("option");
+        projectDiv.textContent = project.name;
+        projectDiv.value = project.name;
+        modalProjectList.appendChild(projectDiv);
+    }
 }

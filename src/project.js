@@ -31,21 +31,6 @@ export function updateProjectList(Projects) {
     }
 }
 
-export function updateModalOptions(Projects) {
-    // Add available Projects to the modal
-    let modalProjectList = document.getElementById("modal-project-list");
-
-    // Clear the existing list
-    modalProjectList.innerHTML = "";
-
-    for (let project of Projects) {
-        let projectDiv = document.createElement("option");
-        projectDiv.textContent = project.name;
-        projectDiv.value = project.name;
-        modalProjectList.appendChild(projectDiv);
-    }
-}
-
 export function loadDefaultProjects(Projects) {
     // Default Projects
     let Personal = Project("Personal");
