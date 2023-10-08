@@ -28,3 +28,17 @@ export function updateProjectList(Projects) {
         projectList.appendChild(projectDiv);
     }
 }
+
+export function updateModalOptions(Projects) {
+    // Add available Projects to the modal
+    let modalProjectList = document.getElementById("modal-project-list");
+
+    // Clear the existing list
+    modalProjectList.innerHTML = "";
+
+    for (let project of Projects) {
+        let projectDiv = document.createElement("option");
+        projectDiv.textContent = project.name;
+        modalProjectList.appendChild(projectDiv);
+    }
+}

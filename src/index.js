@@ -1,4 +1,4 @@
-import './styles.css'
+import './styles.css';
 import Project from "./project";
 import { addToDo } from "./project";
 import { addProject } from "./project";
@@ -6,6 +6,7 @@ import Todo from "./todos";
 import openModal from './modal';
 import { closeModal } from './modal';
 import { updateProjectList } from './project';
+import { updateModalOptions } from './project';
 
 let Projects = [];
 
@@ -18,7 +19,11 @@ updateProjectList(Projects);
 
 console.log(Projects);
 
-//form
+// form //
+
+// Update modal to display project options
+updateModalOptions(Projects);
+
 // Handle form submission
 document.getElementById("addToDo").addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent the default form submission behavior
