@@ -1,5 +1,3 @@
-import openModal from "./modal";
-import { closeModal } from "./modal";
 import Todo from "./todos";
 import { addToDo, updateModalOptions } from "./project";
 import { updateProjectList } from "./project";
@@ -46,4 +44,16 @@ export default function calibrateForm(Projects) {
     window.addEventListener("DOMContentLoaded", function() {
         closeModal();
     });
+}
+
+// Function to open the modal
+export function openModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "flex";
+}
+
+// Function to close the modal
+export function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
 }

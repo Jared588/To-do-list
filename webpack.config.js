@@ -7,7 +7,6 @@ module.exports = {
       index: './src/index.js',
       project: './src/project.js',
       todo: './src/todos.js',
-      modal: './src/modal.js',
       form: './src/form.js'
     },
     plugins: [
