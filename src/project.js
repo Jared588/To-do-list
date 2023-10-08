@@ -1,3 +1,5 @@
+import Todo from "./todos";
+
 export default function Project(name) {
     return {
         name,
@@ -42,6 +44,19 @@ export function updateModalOptions(Projects) {
         projectDiv.value = project.name;
         modalProjectList.appendChild(projectDiv);
     }
+}
 
-    console.log(modalProjectList)
+export function loadDefaultProjects(Projects) {
+    // Default Projects
+    let Personal = Project("Personal");
+    let testToDo = Todo("s", Personal, "bla bla bla,", 2, "busy", 1111, 222);
+    addToDo(Personal, testToDo);
+    addProject(Projects, Personal);
+    updateProjectList(Projects);
+
+    let Work = Project("Work");
+    let anotherToDo = Todo("s", Personal, "bla bla bla,", 2, "busy", 1111, 222);
+    addToDo(Work, anotherToDo);
+    addProject(Projects, Work);
+    updateProjectList(Projects);
 }
