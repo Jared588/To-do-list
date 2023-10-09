@@ -1,5 +1,5 @@
 import Todo from "./todos";
-import { addToDo } from "./project";
+import { addToDo } from "./todos";
 import { updateProjectList } from "./project";
 
 export default function calibrateForm(Projects) {
