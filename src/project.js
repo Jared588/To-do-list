@@ -1,5 +1,5 @@
-import Todo from "./todos";
-import { addToDo } from "./todos";
+import Todo from "./todo";
+import { addToDo } from "./todo";
 
 export default function Project(name) {
     return {

@@ -6,7 +6,7 @@ module.exports = {
     entry: {
       index: './src/index.js',
       project: './src/project.js',
-      todo: './src/todos.js',
+      todo: './src/todo.js',
       form: './src/form.js'
     },
     plugins: [
