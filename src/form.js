@@ -58,7 +58,7 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-function updateModalOptions(Projects) {
+export function updateModalOptions(Projects) {
     // Add available Projects to the modal
     let modalProjectList = document.getElementById("modal-project-list");
 

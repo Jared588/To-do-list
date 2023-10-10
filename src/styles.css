@@ -61,7 +61,8 @@ svg {
     color: rgb(253, 225, 225);
 }
 
-.modal {
+.modal,
+.myProjectModal {
     display: none;
     justify-content: center;
     align-items: center;
@@ -72,6 +73,10 @@ svg {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1; 
     overflow: auto;  
+}
+
+.myProjectModal::placeholder {
+    color: black;
 }
 
 .modal-content {
@@ -91,7 +96,11 @@ label {
 }
 
 #title::placeholder {
-    color: #888; /* Change to the desired color */
+    color: #888; 
+}
+
+#project-name::placeholder {
+    color: #888;
 }
 
 .description-container {
@@ -158,6 +167,14 @@ textarea {
 
 .project-container {
 
+}
+
+.add-project-button {
+    background-color: white;
+    color: rgb(226, 80, 80);
+    border: none;
+    margin: 0rem 2rem;
+    cursor: pointer;
 }
 
 .content {

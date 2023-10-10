@@ -1,5 +1,6 @@
 import Todo from "./todo";
 import { addToDo } from "./todo";
+import { updateModalOptions } from "./form";
 
 export default function Project(name) {
     return {
@@ -41,4 +42,69 @@ export function loadDefaultProjects(Projects) {
     addToDo(Work, anotherToDo);
     addProject(Projects, Work);
     updateProjectList(Projects);
+}
+
+export function addProjectToPageBtn(Projects) {
+    let projectList = document.getElementById("project-list");   
+    let addProjBtn = document.createElement("button");
+    
+    addProjBtn.innerText = "+ add project";
+    addProjBtn.id = "addProjBtn"
+    addProjBtn.classList.add("add-project-button"); 
+    addProjBtn.addEventListener("click", () => OpenProjectModal(Projects)); 
+    projectList.appendChild(addProjBtn);
+}
+
+function OpenProjectModal(Projects) {
+    openModal();
+    // Handle form submission
+    const addProjectForm = document.getElementById("addProject");
+    const submitHandler = function (e) {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        const name = document.getElementById("project-name").value;
+        let newProject = Project(name);
+
+        addProject(Projects, newProject);
+        updateProjectList(Projects);
+        document.getElementById("project-name").value = ''; // Clear the input value after submission
+
+        // Remove the event listener for the form submission
+        addProjectForm.removeEventListener("submit", submitHandler);
+
+        addProjectToPageBtn(Projects);
+        updateModalOptions(Projects);
+        closeModal();
+    };
+
+    addProjectForm.addEventListener("submit", submitHandler);
+
+    // Attach event listeners to open and close the modal
+    document.getElementById("addProjBtn").addEventListener("click", openModal);
+    document.getElementById("closeProjectModal").addEventListener("click", closeModal);
+
+    // Close the modal if the user clicks outside of it
+    window.addEventListener("click", function (event) {
+        var modal = document.getElementById("myProjectModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Initially, hide the modal when the page loads
+    window.addEventListener("DOMContentLoaded", function () {
+        closeModal();
+    });
+
+    // Function to open the modal
+    function openModal() {
+        var modal = document.getElementById("myProjectModal");
+        modal.style.display = "flex";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        var modal = document.getElementById("myProjectModal");
+        modal.style.display = "none";
+    }
 }
