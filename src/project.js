@@ -88,6 +88,7 @@ function OpenProjectModal(Projects) {
         var modal = document.getElementById("myProjectModal");
         if (event.target == modal) {
             modal.style.display = "none";
+            addProjectForm.removeEventListener("submit", submitHandler);
         }
     });
 
@@ -106,5 +107,6 @@ function OpenProjectModal(Projects) {
     function closeModal() {
         var modal = document.getElementById("myProjectModal");
         modal.style.display = "none";
+        addProjectForm.removeEventListener("submit", submitHandler);
     }
 }
