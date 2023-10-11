@@ -1,6 +1,7 @@
 import Todo from "./todo";
 import { addToDo } from "./todo";
 import { updateModalOptions } from "./form";
+import { initializeContent } from "./todo";
 
 export default function Project(name) {
     return {
@@ -25,6 +26,7 @@ export function updateProjectList(Projects) {
         projectDiv.classList.add("project");
         projectDiv.textContent = project.name;
         projectDiv.id = project.name.toLowerCase();
+        projectDiv.addEventListener("click", () => initializeContent(project.name, Projects));
         projectList.appendChild(projectDiv);
     }
 }
@@ -32,13 +34,13 @@ export function updateProjectList(Projects) {
 export function loadDefaultProjects(Projects) {
     // Default Projects
     let Personal = Project("Personal");
-    let testToDo = Todo("s", Personal, "bla bla bla,", 2, "busy", 1111, 222);
+    let testToDo = Todo("personal stuff", Personal, "bla bla bla,", 2, "busy", 1111, 222);
     addToDo(Personal, testToDo);
     addProject(Projects, Personal);
     updateProjectList(Projects);
 
     let Work = Project("Work");
-    let anotherToDo = Todo("s", Personal, "bla bla bla,", 2, "busy", 1111, 222);
+    let anotherToDo = Todo("work stuff", Personal, "bla bla bla,", 2, "busy", 1111, 222);
     addToDo(Work, anotherToDo);
     addProject(Projects, Work);
     updateProjectList(Projects);
