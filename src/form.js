@@ -1,6 +1,5 @@
 import Todo from "./todo";
 import { addToDo } from "./todo";
-import { updateProjectList } from "./project";
 
 export default function calibrateForm(Projects) {
     // Update modal to display project options
@@ -24,7 +23,6 @@ export default function calibrateForm(Projects) {
         const newTodo = Todo(todoName, todoProject, todoDescription, todoPriority, todoStatus, todoDate, todoTime);
         addToDo(todoProject, newTodo);
         
-        updateProjectList(Projects); // Might be unneccesary
         closeModal();
     });
 
