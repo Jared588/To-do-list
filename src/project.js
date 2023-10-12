@@ -113,7 +113,7 @@ export function loadDefaultProjects(Projects) {
 
     let Work = Project("Work");
     let testToDo4 = Todo("Plan user research sessions", Personal, '', 5, "Completed", "2023-10-12" , "09:00");
-    let testToDo5 = Todo("Provide feedback on Amy's design", Personal, '', 9, "To do", "2023-10-12", "11:30");
+    let testToDo5 = Todo("Provide feedback on Amy's design", Personal, 'And be nice!', 9, "Completed", "2023-10-12", "11:30");
     let testToDo6 = Todo("Afternoon meeting", Personal, '', 5, "To do", "2023-10-12", "13:30");
     let testToDo7 = Todo("Hand in report", Personal, 'Dont forget to double check for typos', 5, "To do", "2023-10-12", "15:00");
     addToDo(Work, testToDo4);

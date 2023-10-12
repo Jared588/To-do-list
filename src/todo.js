@@ -26,6 +26,8 @@ export function initializeContent(Project, Projects) {
         info.classList.add("todo-info");
         let stats = document.createElement("div");
         stats.classList.add("todo-stats");
+        let options = document.createElement("div");
+        options.classList.add("todo-otions");
 
         // All individual elements that make up the todo
         let contentStatus = document.createElement("input");
@@ -59,10 +61,32 @@ export function initializeContent(Project, Projects) {
         contentPriority.innerText = `${"❗" + todo.priority}`;;
         stats.appendChild(contentPriority);
 
+        let contentEdit = document.createElement('img');
+        contentEdit.src = '../src/icons/square-edit-outline.svg';
+        contentEdit.classList.add("todo-options");
+        contentEdit.addEventListener("click", () => openEditor(todo));
+        options.appendChild(contentEdit);
+
+        let contentDelete = document.createElement('img');
+        contentDelete.src = '../src/icons/delete-outline.svg';
+        contentDelete.classList.add("todo-options");
+        contentDelete.addEventListener("click", () => Delete(todo));
+        options.appendChild(contentDelete);
+        
+
         contentDiv.appendChild(checkbox);
         contentDiv.appendChild(info);
         contentDiv.appendChild(stats);
+        contentDiv.appendChild(options);
 
         main.appendChild(contentDiv);
     }
+}
+
+function openEditor(todo) {
+
+}
+
+function Delete(todo) {
+
 }
