@@ -14,4 +14,23 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Allow form to work with our Project List
     calibrateForm(Projects);  
+
+    // Load Main Title
+    Home();
+
 });
+
+function Home() {
+    let homeBtn = document.querySelector('#homeBtn');
+    homeBtn.addEventListener("click", loadHome);
+    loadHome();
+
+    function loadHome() {
+        let main = document.querySelector("#content");
+        main.innerHTML = "";
+        let title = document.createElement("p");
+        title.textContent = "Your Daily Blueprint";
+        title.classList.add("main-title");
+        main.appendChild(title);
+    }
+}

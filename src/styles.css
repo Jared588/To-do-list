@@ -18,6 +18,13 @@ body {
     --header-color: rgb(241, 80, 80);
 }
 
+.main-title {
+    color: #ff8a8a;
+    justify-self: right;
+    align-self: top;
+    font-size: 32px;
+}
+
 header {
     display: flex;
     text-align: center;
