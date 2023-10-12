@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
+    min-width: 375px;
     margin: 0;
     padding: 0; 
 }
@@ -154,7 +155,7 @@ textarea {
 .main-container {
     flex-grow: 1;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
 }
 
 .side-panel {
@@ -162,11 +163,7 @@ textarea {
 }
 
 .project-list {
-    
-}
-
-.project-container {
-
+    cursor: pointer;
 }
 
 .add-project-button {
@@ -178,7 +175,47 @@ textarea {
 }
 
 .content {
-    
+    display: grid;
+    padding: 2rem;
+    grid-template-rows: repeat(auto-fill, minmax(8rem, 1fr));
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    height: fit-content;
+    width: fit-content;
+    padding: 0rem 1rem;
+    font-size: 14px;
+    margin-bottom: 1px;
+}
+
+.todo-checkbox {
+    display: flex;
+    grid-row: 1 / 3;
+    justify-self: center;
+    align-self: center;
+    margin-right: 1rem;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#todo-title {
+    color: black;
+    margin-bottom: -0.7rem;
+}
+
+.todo-info {
+    color: #888;
+}
+
+.todo-stats {
+    display: flex;
+    margin-top: -1rem;
 }
 
 footer {

@@ -31,21 +31,6 @@ export function updateProjectList(Projects) {
     }
 }
 
-export function loadDefaultProjects(Projects) {
-    // Default Projects
-    let Personal = Project("Personal");
-    let testToDo = Todo("personal stuff", Personal, "bla bla bla,", 2, "busy", 1111, 222);
-    addToDo(Personal, testToDo);
-    addProject(Projects, Personal);
-    updateProjectList(Projects);
-
-    let Work = Project("Work");
-    let anotherToDo = Todo("work stuff", Personal, "bla bla bla,", 2, "busy", 1111, 222);
-    addToDo(Work, anotherToDo);
-    addProject(Projects, Work);
-    updateProjectList(Projects);
-}
-
 export function addProjectToPageBtn(Projects) {
     let projectList = document.getElementById("project-list");   
     let addProjBtn = document.createElement("button");
@@ -111,4 +96,30 @@ function OpenProjectModal(Projects) {
         modal.style.display = "none";
         addProjectForm.removeEventListener("submit", submitHandler);
     }
+}
+
+// Default/Demo Projects
+export function loadDefaultProjects(Projects) {
+    // Default Projects
+    let Personal = Project("Personal");
+    let testToDo = Todo("Do 30 minutes of yoga 🧘", Personal, "Find an instructor online and stick with it!", 5, "Completed", 1111, 222);
+    let testToDo2 = Todo("Dentist appointment", Personal, "Don't forget to brush your teeth!", 9, "To do", 1111, 222);
+    let testToDo3 = Todo("Buy bread 🍞", Personal, '', 5, "To do", 1111, 222);
+    addToDo(Personal, testToDo);
+    addToDo(Personal, testToDo2);
+    addToDo(Personal, testToDo3);
+    addProject(Projects, Personal);
+    updateProjectList(Projects);
+
+    let Work = Project("Work");
+    let testToDo4 = Todo("Plan user research sessions", Personal, '', 5, "Completed", 1111, 222);
+    let testToDo5 = Todo("Provide feedback on Amy's design", Personal, '', 9, "To do", 1111, 222);
+    let testToDo6 = Todo("Afternoon meeting", Personal, '', 5, "To do", 1111, 222);
+    let testToDo7 = Todo("Hand in report", Personal, 'Dont forget to double check for typos', 5, "To do", 1111, 222);
+    addToDo(Work, testToDo4);
+    addToDo(Work, testToDo5);
+    addToDo(Work, testToDo6);
+    addToDo(Work, testToDo7);
+    addProject(Projects, Work);
+    updateProjectList(Projects);
 }
