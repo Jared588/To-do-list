@@ -46,15 +46,17 @@ export function initializeContent(Project, Projects) {
         info.appendChild(contentDescription);
 
         let contentDate = document.createElement("p");
-        contentDate.innerText = todo.date;
+        contentDate.innerText = `${"📅" + todo.date}`;
+        contentDate.id = "todo-date";
         stats.appendChild(contentDate);
 
         let contentTime = document.createElement("p");
-        contentTime.innerText = todo.time;
+        contentTime.innerText = `${"🕒" + todo.time}`;
+        contentTime.id = "todo-time";
         stats.appendChild(contentTime);
 
         let contentPriority = document.createElement("p");
-        contentPriority.innerText = todo.priority;
+        contentPriority.innerText = `${"❗" + todo.priority}`;;
         stats.appendChild(contentPriority);
 
         contentDiv.appendChild(checkbox);

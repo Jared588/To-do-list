@@ -223,6 +223,15 @@ input[type="checkbox"] {
 .todo-stats {
     display: flex;
     margin-top: -1rem;
+    gap: 1rem;
+}
+
+#todo-date {
+    color: rgb(70, 70, 207);
+}
+
+#todo-time {
+    color: rgb(19, 167, 19);
 }
 
 footer {
