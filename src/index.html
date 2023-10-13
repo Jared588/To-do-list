@@ -68,6 +68,41 @@
             </form>
         </div>
     </div>
+    <div class="editorModal" id="editorModal">
+        <div class="modal-content">
+            <span class="close" id="closeEditorModal">&times;</span>
+            <form id="edit-todo">
+                <div class="form-top">
+                    <input type="text" id="edit-title" name="title" placeholder="Title" required><br>
+                </div>
+                
+                <div class="description-container">
+                    <textarea id="edit-description" rows="2" name="description" placeholder="Description" ></textarea>
+                </div><br>
+                
+                <div class="form-bottom"> 
+                    <div class="input-container">
+                        <label for="priority">Priority:</label>
+                        <input type="number" min="0" max="10" id="edit-priority" name="priority" required></input><br>
+                    </div>
+                    <div class="input-container">
+                        <label for="status">Status:</label>
+                        <select id="edit-status" name="status" required>
+                            <option value="todo">To Do</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select><br>
+                    </div>
+                    <div class="input-container">
+                        <input type="date" id="edit-date" name="date" required></input><br>
+                        <input type="time" id="edit-time" name="time" required></input><br>
+                    </div>
+                </div>
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
     <div class="main-container">
         <div class="side-panel">
             <div class="project-list" id="project-list"></div> 

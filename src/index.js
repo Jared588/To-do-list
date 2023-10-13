@@ -2,8 +2,10 @@ import './styles.css';
 import calibrateForm from './form';
 import { loadDefaultProjects } from './project';
 import { addProjectToPageBtn } from './project';
+import { hideEditorModal } from './todo';
 
 let Projects = [];
+export { Projects };
 
 document.addEventListener("DOMContentLoaded", function () {
     // Load default demo projects
@@ -17,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load Main Title
     Home();
+
+    // Hide editor modal
+    hideEditorModal();
 
 });
 

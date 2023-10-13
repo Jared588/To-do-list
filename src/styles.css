@@ -70,7 +70,8 @@ svg {
 }
 
 .modal,
-.myProjectModal {
+.myProjectModal,
+.editorModal {
     display: none;
     justify-content: center;
     align-items: center;

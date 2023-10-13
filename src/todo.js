@@ -1,3 +1,6 @@
+import { updateModalOptions } from "./form";
+import { Projects } from ".";
+
 export default function Todo(title, project, description, priority, status, date, time) {
     return {title, project, description, priority, status, date, time};
 };
@@ -83,8 +86,95 @@ export function initializeContent(Project, Projects) {
     }
 }
 
-function openEditor(todo) {
+export function hideEditorModal() {
+    // Initially, hide the modal when the page loads
+    window.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("editorModal");
+        modal.style.display = "none";
+    });
+}
 
+function openEditor(todo) {
+    openModal();
+    console.log(todo.title);
+    // Attach event listeners to open and close the modal
+    document.getElementById("closeEditorModal").addEventListener("click", closeModal);
+
+    // Close the modal if the user clicks outside of it
+    window.addEventListener("click", function (event) {
+        var modal = document.getElementById("editorModal");
+        if (event.target == modal) {
+            modal.style.display = "none";       
+        }
+    });
+
+    // Function to open the modal
+    function openModal() {
+        var modal = document.getElementById("editorModal");
+        modal.style.display = "flex";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        var modal = document.getElementById("editorModal");
+        modal.style.display = "none";
+    }
+
+    // Fill the form with its specific information
+    let editTitle = document.querySelector("#edit-title");   
+    editTitle.value = todo.title;
+    let editDescription = document.querySelector("#edit-description");
+    editDescription.innerText = todo.description;
+    let editPriority = document.querySelector("#edit-priority");
+    editPriority.value = todo.priority;
+
+    let editStatus = document.querySelector("#edit-status");
+    for (let option of editStatus.options) {
+        option.removeAttribute("selected");
+    }
+    let formattedStatus;
+    if (todo.status === "To do") {
+        formattedStatus = "todo"
+    } else if (todo.status === "inProgress") {
+        formattedStatus = "inProgress"
+    } else if (todo.status === "Completed") {
+        formattedStatus = "completed"
+    }
+    editStatus.querySelector(`[value="${formattedStatus}"]`).selected = true;
+
+    let editDate = document.querySelector("#edit-date");
+    editDate.value = todo.date;
+    let editTime = document.querySelector("#edit-time");
+    editTime.value = todo.time;
+
+    // Handle form submission
+    document.getElementById("edit-todo").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        const newName = document.getElementById("edit-title").value;
+        const newDescription = document.getElementById("edit-description").value;
+        const newPriority = document.getElementById("edit-priority").value;
+        const newStatus = document.getElementById("edit-status").value;
+        const newDate = document.getElementById("edit-date").value;
+        const newTime = document.getElementById("edit-time").value;
+
+        // Find the old Todo
+        const todoProjectName = todo.project.name;
+        const project = Projects.find(project => project.name === todoProjectName);
+        const oldTodo = project.todos.find(todoItem => todoItem.name === todo.name);
+
+        // Update with new info
+        oldTodo.title = newName;
+        oldTodo.description = newDescription;
+        oldTodo.priority = newPriority;
+        oldTodo.status = newStatus;
+        oldTodo.date = newDate;
+        oldTodo.time = newTime;
+        
+        initializeContent(todoProjectName, Projects);
+        console.log(Projects);
+        closeModal();
+    });
 }
 
 function Delete(todo) {
