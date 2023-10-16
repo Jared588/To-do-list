@@ -21,11 +21,12 @@ export default function calibrateForm(Projects) {
         // Find the actual Project
         const todoProject = Projects.find(project => project.name === todoProjectName);
 
-        const newTodo = Todo(todoName, todoProject, todoDescription, todoPriority, todoStatus, todoDate.toString(), todoTime.toString());
+        const newTodo = Todo(todoName, todoProject, todoDescription, parseInt(todoPriority, 10), todoStatus, todoDate.toString(), todoTime.toString());
         addToDo(todoProject, newTodo);
         
         initializeContent(todoProjectName, Projects);
         console.log(Projects);
+        console.log(newTodo);
         closeModal();
     });
 
