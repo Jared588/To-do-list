@@ -11,7 +11,6 @@ export function addToDo(project, todo) {
 
 export function initializeContent(Project, Projects) {
     let project = Projects.find(project => project.name === Project);
-    console.log(project.todos[0]);
 
     let main = document.querySelector("#content");
     main.classList.add("content");
@@ -67,13 +66,19 @@ export function initializeContent(Project, Projects) {
         let contentEdit = document.createElement('img');
         contentEdit.src = '../src/icons/square-edit-outline.svg';
         contentEdit.classList.add("todo-options");
-        contentEdit.addEventListener("click", () => openEditor(todo));
+        contentEdit.addEventListener("click", () =>  {
+            console.log(todo);
+            openEditor(todo);
+        });
         options.appendChild(contentEdit);
 
         let contentDelete = document.createElement('img');
         contentDelete.src = '../src/icons/delete-outline.svg';
         contentDelete.classList.add("todo-options");
-        contentDelete.addEventListener("click", () => Delete(todo));
+        contentDelete.addEventListener("click", () => {
+            console.log(todo);
+            Delete(todo);
+        });
         options.appendChild(contentDelete);
         
 
@@ -96,17 +101,25 @@ export function hideEditorModal() {
 
 function openEditor(todo) {
     openModal();
+    clearModal();
+    fillForm();
     console.log(todo.title);
-    // Attach event listeners to open and close the modal
-    document.getElementById("closeEditorModal").addEventListener("click", closeModal);
+
+    const closeEditorModalButton = document.getElementById("closeEditorModal");
+    const editTodoForm = document.getElementById("edit-todo");
 
     // Close the modal if the user clicks outside of it
-    window.addEventListener("click", function (event) {
+    window.addEventListener("click", closeModalOnClickOutside);
+    
+    function closeModalOnClickOutside(event) {
         var modal = document.getElementById("editorModal");
-        if (event.target == modal) {
-            modal.style.display = "none";       
+        if (event.target === modal) {
+            closeModal();
+            // Remove the event listener
+            window.removeEventListener("click", closeModalOnClickOutside);
+            editTodoForm.removeEventListener("submit", handleFormSubmission);
         }
-    });
+    }
 
     // Function to open the modal
     function openModal() {
@@ -118,37 +131,38 @@ function openEditor(todo) {
     function closeModal() {
         var modal = document.getElementById("editorModal");
         modal.style.display = "none";
+
+        // Remove event listners
+        window.removeEventListener("click", closeModalOnClickOutside);
+        closeEditorModalButton.removeEventListener("click", closeModal);
+        editTodoForm.removeEventListener("submit", handleFormSubmission);
     }
 
     // Fill the form with its specific information
-    let editTitle = document.querySelector("#edit-title");   
-    editTitle.value = todo.title;
-    let editDescription = document.querySelector("#edit-description");
-    editDescription.innerText = todo.description;
-    let editPriority = document.querySelector("#edit-priority");
-    editPriority.value = todo.priority;
+    function fillForm() {
+        let editTitle = document.querySelector("#edit-title");   
+        editTitle.value = todo.title;
+        let editDescription = document.querySelector("#edit-description");
+        editDescription.value = todo.description;
+        let editPriority = document.querySelector("#edit-priority");
+        editPriority.value = todo.priority;
 
-    let editStatus = document.querySelector("#edit-status");
-    for (let option of editStatus.options) {
-        option.removeAttribute("selected");
-    }
-    let formattedStatus;
-    if (todo.status === "To do") {
-        formattedStatus = "todo"
-    } else if (todo.status === "inProgress") {
-        formattedStatus = "inProgress"
-    } else if (todo.status === "Completed") {
-        formattedStatus = "completed"
-    }
-    editStatus.querySelector(`[value="${formattedStatus}"]`).selected = true;
+        let editStatus = document.querySelector("#edit-status");
+        for (let option of editStatus.options) {
+            option.removeAttribute("selected");
+        }
+        let formattedStatus;
+        formattedStatus = todo.status;
+        editStatus.querySelector(`[value="${formattedStatus}"]`).selected = true;
 
-    let editDate = document.querySelector("#edit-date");
-    editDate.value = todo.date;
-    let editTime = document.querySelector("#edit-time");
-    editTime.value = todo.time;
+        let editDate = document.querySelector("#edit-date");
+        editDate.value = todo.date;
+        let editTime = document.querySelector("#edit-time");
+        editTime.value = todo.time;
+    }
 
     // Handle form submission
-    document.getElementById("edit-todo").addEventListener("submit", function (e) {
+    function handleFormSubmission(e) {
         e.preventDefault(); // Prevent the default form submission behavior
 
         const newName = document.getElementById("edit-title").value;
@@ -161,8 +175,8 @@ function openEditor(todo) {
         // Find the old Todo
         const todoProjectName = todo.project.name;
         const project = Projects.find(project => project.name === todoProjectName);
-        const oldTodo = project.todos.find(todoItem => todoItem.name === todo.name);
-
+        const oldTodo = project.todos.find(todoItem => todoItem.title === todo.title);
+        
         // Update with new info
         oldTodo.title = newName;
         oldTodo.description = newDescription;
@@ -170,13 +184,44 @@ function openEditor(todo) {
         oldTodo.status = newStatus;
         oldTodo.date = newDate;
         oldTodo.time = newTime;
-        
+
         initializeContent(todoProjectName, Projects);
-        console.log(Projects);
         closeModal();
-    });
+    }
+
+    // Remove previous event listeners
+    closeEditorModalButton.removeEventListener("click", closeModal);
+    editTodoForm.removeEventListener("submit", handleFormSubmission);
+
+    // Add event listeners
+    closeEditorModalButton.addEventListener("click", closeModal);
+    editTodoForm.addEventListener("submit", handleFormSubmission);
+
+    function clearModal() {
+        const editTitle = document.querySelector("#edit-title");
+        const editDescription = document.querySelector("#edit-description");
+        const editPriority = document.querySelector("#edit-priority");
+        const editStatus = document.querySelector("#edit-status");
+        const editDate = document.querySelector("#edit-date");
+        const editTime = document.querySelector("#edit-time");
+    
+        // Reset input values to empty strings
+        editTitle.value = "";
+        editDescription.value = "";
+        editPriority.value = "";
+        editDate.value = "";
+        editTime.value = "";
+    
+        // Reset the status select element, assuming the default option has an empty value
+        editStatus.value = "";
+    }
 }
 
 function Delete(todo) {
+    let projectName = todo.project.name;
+    let project = Projects.find(project => project.name === projectName);
+    const todoIndex = project.todos.findIndex(todoItem => todoItem.title === todo.title);
+    project.todos.splice(todoIndex, 1);
 
+    initializeContent(projectName, Projects);
 }
