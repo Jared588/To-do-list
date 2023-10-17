@@ -1,4 +1,6 @@
 import { Projects } from ".";
+import editIcon from './icons/square-edit-outline.svg';
+import deleteIcon from './icons/delete-outline.svg';
 
 export default function Todo(title, project, description, priority, status, date, time) {
     return {title, project, description, priority, status, date, time};
@@ -63,13 +65,13 @@ export function initializeContent(Project, Projects) {
         stats.appendChild(contentPriority);
 
         let contentEdit = document.createElement('img');
-        contentEdit.src = '../src/icons/square-edit-outline.svg';
+        contentEdit.src = editIcon;
         contentEdit.classList.add("todo-options");
         contentEdit.addEventListener("click", () =>  openEditor(todo));
         options.appendChild(contentEdit);
 
         let contentDelete = document.createElement('img');
-        contentDelete.src = '../src/icons/delete-outline.svg';
+        contentDelete.src = deleteIcon;
         contentDelete.classList.add("todo-options");
         contentDelete.addEventListener("click", () => Delete(todo));
         options.appendChild(contentDelete);
