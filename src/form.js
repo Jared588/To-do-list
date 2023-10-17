@@ -25,8 +25,6 @@ export default function calibrateForm(Projects) {
         addToDo(todoProject, newTodo);
         
         initializeContent(todoProjectName, Projects);
-        console.log(Projects);
-        console.log(newTodo);
         closeModal();
     });
 

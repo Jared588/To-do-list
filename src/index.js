@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hide editor modal
     hideEditorModal();
-
 });
 
 function Home() {
